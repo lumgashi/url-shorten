@@ -7,6 +7,10 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  await app.listen(3000);
+  BigInt.prototype['toJSON'] = function () {
+    const int = Number.parseInt(this.toString());
+    return int ?? this.toString();
+  };
+  await app.listen(5000);
 }
 bootstrap();

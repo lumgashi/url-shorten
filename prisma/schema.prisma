@@ -13,13 +13,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Url {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  original_url    String
-  short_url       String   @unique
-  created_at      DateTime @default(now())
-  clicks          Int      @default(0)
-
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  original_url String   @unique
+  urlID        String   @unique
+  short_url    String   @unique
+  clicks       Int      @default(0)
+  ttl          BigInt   @default(60000)
+  createdAt    DateTime @default(now())
   @@map("urls")
 }

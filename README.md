@@ -18,7 +18,7 @@
     </li>
     <li>
       <strong>GET ONE:</strong> <code>http://localhost:5000/api/urls/:urlID</code>
-      <p><strong>Description:</strong> Retrieves a single shortened URL document by its ID.</p>
+      <p><strong>Description:</strong> Retrieves a single shortened URL document by its urlID</p>
       <p><strong>Parameters:</strong></p>
       <ul>
         <li><code>urlID</code>: The unique identifier of the shortened URL.</li>
@@ -26,7 +26,7 @@
     </li>
     <li>
       <strong>DELETE:</strong> <code>http://localhost:5000/api/urls/:urlID</code>
-      <p><strong>Description:</strong> Deletes a single shortened URL document by its ID.</p>
+      <p><strong>Description:</strong> Deletes a single shortened URL document by its urlID</p>
       <p><strong>Parameters:</strong></p>
       <ul>
         <li><code>urlID</code>: The unique identifier of the shortened URL.</li>

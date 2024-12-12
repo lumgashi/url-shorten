@@ -9,9 +9,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 //import { nanoid } from 'nanoid';
 import { customAlphabet } from 'nanoid';
 import { ConfigService } from '@nestjs/config';
-import { Response } from 'express';
 import { isLinkExpired } from 'src/utils/functions';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { Url } from '@prisma/client';
 
 @Injectable()
 export class UrlsService {
@@ -67,7 +67,7 @@ export class UrlsService {
     }
   }
 
-  async findOne(urlId: string, response: Response): Promise<void> {
+  async findOne(urlId: string): Promise<Url> {
     const url = await this.prisma.url.findUnique({
       where: {
         urlID: urlId,
@@ -82,7 +82,7 @@ export class UrlsService {
 
     if (isExpired) throw new GoneException('Link has expired');
 
-    await this.prisma.url.update({
+    const updateURL = await this.prisma.url.update({
       where: {
         urlID: urlId,
       },
@@ -93,7 +93,10 @@ export class UrlsService {
       },
     });
 
-    response.redirect(url.original_url);
+    console.log('updateURL::', updateURL);
+
+    //response.redirect(url.original_url);
+    return updateURL;
   }
 
   async remove(urlID: string) {

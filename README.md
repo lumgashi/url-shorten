@@ -1,7 +1,7 @@
 <body>
   <h1>URL Shortener Backend</h1>
 
-  <p>This is a backend application built with <strong>NestJS</strong>, <strong>MongoDB</strong>, and <strong>Prisma</strong>. The application provides a simple service to shorten URLs with expiration functionality.</p>
+  <p>This is a backend application built with <strong>NestJS</strong>, <strong>MongoDB</strong>, and <strong>Prisma</strong>. The application provides a simple service to shorten URLs with expiration functionality, the expired links will automatically be deleted by using cron jobs</p>
 
   <h2>Endpoints</h2>
   <ol>
